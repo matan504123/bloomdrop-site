@@ -5,48 +5,91 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>BloomDrop — a watercolor merge puzzler for iOS</title>
   <meta name="description" content="BloomDrop is a calming watercolor merge puzzler for iOS. Drop colored pigment, merge matching drops up a 7-color ladder, and watch the paint bloom and bleed across the paper. No ads, no tracking, works offline.">
-  <meta name="theme-color" content="#f6efdd">
+  <meta name="theme-color" content="#f4ecd8">
+
+  <!-- icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" href="/icon-180.png">
+
+  <!-- social / Open Graph + Twitter -->
   <meta property="og:title" content="BloomDrop — a watercolor merge puzzler">
   <meta property="og:description" content="Drop, merge, and watch the paint bloom. A calming watercolor merge puzzler for iOS. No ads, no tracking.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://matan504123.github.io/bloomdrop-site/">
+  <meta property="og:image" content="https://matan504123.github.io/bloomdrop-site/icon-512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="BloomDrop — a watercolor merge puzzler">
+  <meta name="twitter:description" content="Drop, merge, and watch the paint bloom. A calming watercolor merge puzzler for iOS. No ads, no tracking.">
+  <meta name="twitter:image" content="https://matan504123.github.io/bloomdrop-site/icon-512.png">
+
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 
-  <div class="bar">
-    <a class="brand" href="/">
-      <!-- BloomDrop logo / drop mark -->
-      <svg viewBox="0 0 64 64" role="img" aria-label="BloomDrop logo">
-        <defs>
-          <radialGradient id="lg-drop" cx="38%" cy="30%" r="75%">
-            <stop offset="0%" stop-color="#fff" stop-opacity="0.9"/>
-            <stop offset="40%" stop-color="#e6a9b8"/>
-            <stop offset="100%" stop-color="#b06b7d"/>
-          </radialGradient>
-        </defs>
-        <!-- teardrop -->
-        <path d="M32 6 C 44 24, 54 34, 54 44 a22 22 0 0 1 -44 0 C 10 34, 20 24, 32 6 Z"
-              fill="url(#lg-drop)"/>
-        <!-- inner bloom rings -->
-        <circle cx="32" cy="42" r="11" fill="#fff" opacity="0.16"/>
-        <circle cx="29" cy="38" r="4.5" fill="#fff" opacity="0.55"/>
-      </svg>
-      BloomDrop
-    </a>
-    <nav>
-      <a href="#features">Features</a>
-      <a href="#how">How to play</a>
-      <a href="/privacy/">Privacy</a>
-      <a href="/support/">Support</a>
-    </nav>
+  <!-- ================================ side paint drips (decorative) ====== -->
+  <div class="drips drips--left" aria-hidden="true">
+    <svg viewBox="0 0 130 1000" preserveAspectRatio="xMinYMin slice" xmlns="http://www.w3.org/2000/svg">
+      <!-- drip 1 — plum -->
+      <g class="drip-run">
+        <path d="M14 0 H46 C44 70 50 140 42 220 C39 250 33 252 31 222 C28 150 30 70 14 0 Z" fill="#A848C0" opacity="0.85"/>
+        <circle class="drip-drop" cx="35" cy="232" r="12" fill="#A848C0" opacity="0.9"/>
+      </g>
+      <!-- drip 2 — sky -->
+      <g class="drip-run">
+        <path d="M72 0 H104 C101 110 108 230 99 370 C96 408 88 410 86 372 C82 240 86 110 72 0 Z" fill="#40A8DC" opacity="0.8"/>
+        <circle class="drip-drop" cx="92" cy="386" r="13" fill="#40A8DC" opacity="0.85"/>
+      </g>
+      <!-- drip 3 — sage -->
+      <g class="drip-run">
+        <path d="M40 0 H66 C64 180 70 360 60 560 C57 600 50 602 48 562 C45 380 52 190 40 0 Z" fill="#64BE78" opacity="0.72"/>
+        <circle class="drip-drop" cx="54" cy="576" r="11" fill="#64BE78" opacity="0.8"/>
+      </g>
+    </svg>
   </div>
 
-  <!-- ============================================================ HERO -->
-  <header class="hero">
-    <div class="hero__copy">
-      <span class="eyebrow">Coming soon to iOS</span>
+  <div class="drips drips--right" aria-hidden="true">
+    <svg viewBox="0 0 130 1000" preserveAspectRatio="xMinYMin slice" xmlns="http://www.w3.org/2000/svg">
+      <!-- drip 1 — rose -->
+      <g class="drip-run">
+        <path d="M20 0 H50 C48 90 54 180 45 290 C42 322 35 324 33 292 C30 190 34 90 20 0 Z" fill="#E27080" opacity="0.85"/>
+        <circle class="drip-drop" cx="38" cy="304" r="12" fill="#E27080" opacity="0.9"/>
+      </g>
+      <!-- drip 2 — periwinkle -->
+      <g class="drip-run">
+        <path d="M78 0 H106 C103 130 110 280 100 440 C97 480 89 482 87 442 C83 290 88 130 78 0 Z" fill="#6060D2" opacity="0.78"/>
+        <circle class="drip-drop" cx="93" cy="456" r="13" fill="#6060D2" opacity="0.85"/>
+      </g>
+      <!-- drip 3 — peach -->
+      <g class="drip-run">
+        <path d="M46 0 H72 C70 160 76 320 66 500 C63 540 56 542 54 502 C51 330 58 170 46 0 Z" fill="#EEA248" opacity="0.74"/>
+        <circle class="drip-drop" cx="60" cy="516" r="11" fill="#EEA248" opacity="0.8"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- ================================================= sticky header ===== -->
+  <header class="bar" id="bar">
+    <div class="bar__inner">
+      <a class="brand" href="/">
+        <img class="brand__icon" src="/icon-512.png" alt="BloomDrop app icon" width="38" height="38">
+        BloomDrop
+      </a>
+      <nav>
+        <a href="#features">Features</a>
+        <a href="#how">How to play</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/support/">Support</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========================================================= HERO ===== -->
+  <section class="hero">
+    <div class="hero__copy reveal is-in">
+      <span class="eyebrow"><span class="dot"></span> Coming soon to iOS</span>
       <h1 class="wordmark"><span class="grad">BloomDrop</span></h1>
-      <p class="tagline">Drop. Merge. Bloom.</p>
+      <p class="tagline">Drop<span class="sep">·</span>Merge<span class="sep">·</span>Bloom</p>
       <p class="lede">
         A calming watercolor merge puzzler. Drop colored pigment into a paper bin,
         merge matching drops up a seven-color ladder, and watch every merge bloom
@@ -78,158 +121,102 @@
       </div>
     </div>
 
-    <!-- ===================================== inline hero illustration -->
-    <div class="hero__art">
-      <svg viewBox="0 0 480 480" role="img"
-           aria-label="A paper bin holding overlapping watercolor pigment circles in the BloomDrop palette, blooming and merging together.">
+    <!-- ============================= hero art: real icon + paint splash -->
+    <div class="hero__art reveal is-in">
+      <!-- soft animated paint splash behind the icon -->
+      <svg class="hero__splash" viewBox="0 0 480 480" role="img"
+           aria-label="A burst of watercolor paint blooming behind the BloomDrop icon.">
         <defs>
-          <radialGradient id="b1" cx="38%" cy="32%" r="70%">
-            <stop offset="0%" stop-color="#fff" stop-opacity="0.85"/>
-            <stop offset="55%" stop-color="#e6a9b8"/><stop offset="100%" stop-color="#d98aa0"/>
-          </radialGradient>
-          <radialGradient id="b2" cx="38%" cy="32%" r="70%">
-            <stop offset="0%" stop-color="#fff" stop-opacity="0.85"/>
-            <stop offset="55%" stop-color="#eac79a"/><stop offset="100%" stop-color="#e2b178"/>
-          </radialGradient>
-          <radialGradient id="b3" cx="38%" cy="32%" r="70%">
-            <stop offset="0%" stop-color="#fff" stop-opacity="0.85"/>
-            <stop offset="55%" stop-color="#ecd98f"/><stop offset="100%" stop-color="#e0c96a"/>
-          </radialGradient>
-          <radialGradient id="b4" cx="38%" cy="32%" r="70%">
-            <stop offset="0%" stop-color="#fff" stop-opacity="0.85"/>
-            <stop offset="55%" stop-color="#bcd49b"/><stop offset="100%" stop-color="#a3c279"/>
-          </radialGradient>
-          <radialGradient id="b5" cx="38%" cy="32%" r="70%">
-            <stop offset="0%" stop-color="#fff" stop-opacity="0.85"/>
-            <stop offset="55%" stop-color="#9bc4e0"/><stop offset="100%" stop-color="#76a9cf"/>
-          </radialGradient>
-          <radialGradient id="b6" cx="38%" cy="32%" r="70%">
-            <stop offset="0%" stop-color="#fff" stop-opacity="0.85"/>
-            <stop offset="55%" stop-color="#a9a4d8"/><stop offset="100%" stop-color="#8b85c7"/>
-          </radialGradient>
-          <radialGradient id="b7" cx="38%" cy="32%" r="70%">
-            <stop offset="0%" stop-color="#fff" stop-opacity="0.85"/>
-            <stop offset="55%" stop-color="#c79bc8"/><stop offset="100%" stop-color="#b27cb4"/>
-          </radialGradient>
-          <linearGradient id="bin" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#fcf8ee"/>
-            <stop offset="100%" stop-color="#efe6cf"/>
-          </linearGradient>
-          <!-- watercolor edge wobble -->
-          <filter id="bleed" x="-30%" y="-30%" width="160%" height="160%">
-            <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="7" result="n"/>
-            <feDisplacementMap in="SourceGraphic" in2="n" scale="14"
-                               xChannelSelector="R" yChannelSelector="G"/>
+          <filter id="splashBleed" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="6"/>
           </filter>
-          <clipPath id="binclip">
-            <path d="M96 188 L384 188 L360 392 a18 18 0 0 1 -18 16 L138 408 a18 18 0 0 1 -18 -16 Z"/>
-          </clipPath>
         </defs>
-
-        <!-- ambient background blooms -->
-        <g filter="url(#bleed)" opacity="0.55">
-          <circle cx="110" cy="120" r="70" fill="url(#b5)" opacity="0.5"/>
-          <circle cx="380" cy="110" r="58" fill="url(#b1)" opacity="0.5"/>
-          <circle cx="400" cy="380" r="64" fill="url(#b4)" opacity="0.45"/>
+        <g filter="url(#splashBleed)" opacity="0.85">
+          <circle cx="150" cy="140" r="78" fill="#E27080" opacity="0.55"/>
+          <circle cx="330" cy="130" r="70" fill="#EEA248" opacity="0.5"/>
+          <circle cx="120" cy="320" r="74" fill="#64BE78" opacity="0.5"/>
+          <circle cx="360" cy="320" r="80" fill="#40A8DC" opacity="0.5"/>
+          <circle cx="240" cy="120" r="60" fill="#ECD444" opacity="0.45"/>
+          <circle cx="240" cy="360" r="66" fill="#6060D2" opacity="0.45"/>
+          <circle cx="360" cy="220" r="58" fill="#A848C0" opacity="0.45"/>
+          <circle cx="120" cy="220" r="56" fill="#c490d2" opacity="0.4"/>
         </g>
-
-        <!-- a drop falling in from above -->
-        <g filter="url(#bleed)">
-          <path d="M240 36 C 252 64, 268 80, 268 96 a28 28 0 0 1 -56 0 C 212 80, 228 64, 240 36 Z"
-                fill="url(#b7)"/>
-        </g>
-
-        <!-- the paper bin -->
-        <path d="M96 188 L384 188 L360 392 a18 18 0 0 1 -18 16 L138 408 a18 18 0 0 1 -18 -16 Z"
-              fill="url(#bin)" stroke="#e3d9c2" stroke-width="3"/>
-
-        <!-- pigment blooms inside the bin, overlapping & merging -->
-        <g clip-path="url(#binclip)" filter="url(#bleed)">
-          <circle cx="170" cy="330" r="62" fill="url(#b4)" opacity="0.92"/>
-          <circle cx="300" cy="345" r="70" fill="url(#b2)" opacity="0.92"/>
-          <circle cx="150" cy="250" r="48" fill="url(#b1)" opacity="0.92"/>
-          <circle cx="248" cy="270" r="56" fill="url(#b5)" opacity="0.90"/>
-          <circle cx="330" cy="250" r="44" fill="url(#b6)" opacity="0.90"/>
-          <!-- two same-color drops mid-merge -->
-          <circle cx="214" cy="350" r="40" fill="url(#b3)" opacity="0.88"/>
-          <circle cx="256" cy="356" r="40" fill="url(#b3)" opacity="0.88"/>
-          <!-- soft highlights -->
-          <circle cx="158" cy="238" r="12" fill="#fff" opacity="0.45"/>
-          <circle cx="236" cy="258" r="14" fill="#fff" opacity="0.40"/>
-          <circle cx="318" cy="238" r="10" fill="#fff" opacity="0.40"/>
-        </g>
-
-        <!-- bin rim highlight -->
-        <path d="M96 188 L384 188" stroke="#fff" stroke-width="3" opacity="0.6" stroke-linecap="round"/>
-        <!-- faint danger line near the top of the bin -->
-        <path d="M104 214 L376 214" stroke="#b06b7d" stroke-width="2"
-              stroke-dasharray="6 7" opacity="0.5"/>
       </svg>
+      <!-- the real app icon -->
+      <img class="hero__icon" src="/icon-512.png"
+           alt="BloomDrop app icon — a glossy violet watercolor droplet over a rainbow paint splash on cream paper"
+           width="360" height="360">
     </div>
-  </header>
+  </section>
 
   <main class="wrap">
 
-    <!-- ========================================================= FEATURES -->
+    <!-- ====================================================== PITCH ====== -->
+    <p class="pitch reveal">
+      A puzzle you play with <em>pigment</em>. Easy to pick up, lovely to look at,
+      and built — from the first drop to the last bloom — to respect your time and your privacy.
+    </p>
+
+    <!-- ==================================================== FEATURES ===== -->
     <section class="section" id="features">
-      <div class="section__head">
+      <div class="section__head reveal">
         <h2>A puzzler that paints itself</h2>
-        <p>Simple to pick up, lovely to look at, and built to respect you.</p>
+        <p>Simple to learn, hard to put down, and gorgeous the whole way up the ladder.</p>
       </div>
 
       <div class="features">
-        <article class="feature">
+        <article class="feature reveal" data-delay="1">
           <svg class="ic" viewBox="0 0 48 48" aria-hidden="true">
-            <circle cx="20" cy="24" r="13" fill="#e6a9b8" opacity="0.85"/>
-            <circle cx="30" cy="24" r="13" fill="#9bc4e0" opacity="0.7"/>
+            <circle cx="20" cy="24" r="14" fill="#E27080" opacity="0.85"/>
+            <circle cx="30" cy="24" r="14" fill="#40A8DC" opacity="0.62"/>
           </svg>
           <h3>Signature watercolor bleed</h3>
           <p>Every merge blooms and bleeds across the paper in soft, spreading washes — the visual heart of the game.</p>
         </article>
 
-        <article class="feature">
+        <article class="feature reveal" data-delay="2">
           <svg class="ic" viewBox="0 0 48 48" aria-hidden="true">
-            <circle cx="12" cy="30" r="8" fill="#e6a9b8"/>
-            <circle cx="24" cy="30" r="8" fill="#bcd49b"/>
-            <circle cx="34" cy="18" r="8" fill="#a9a4d8"/>
+            <circle cx="12" cy="32" r="9" fill="#E27080"/>
+            <circle cx="25" cy="32" r="9" fill="#64BE78"/>
+            <circle cx="35" cy="17" r="9" fill="#6060D2"/>
           </svg>
           <h3>Drop &amp; merge, up the ladder</h3>
-          <p>Two same-color drops merge into the next color up a seven-tier pigment ladder. Easy to learn, hard to put down.</p>
+          <p>Two same-color drops merge into the next color up a seven-tier pigment ladder. Easy to learn, hard to stop.</p>
         </article>
 
-        <article class="feature">
+        <article class="feature reveal" data-delay="3">
           <svg class="ic" viewBox="0 0 48 48" aria-hidden="true">
-            <path d="M8 36 L18 22 L26 30 L40 12" fill="none" stroke="#b06b7d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-            <line x1="6" y1="14" x2="42" y2="14" stroke="#b06b7d" stroke-width="2.5" stroke-dasharray="4 5" opacity="0.6"/>
+            <path d="M8 36 L18 22 L26 30 L40 12" fill="none" stroke="#A848C0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="6" y1="14" x2="42" y2="14" stroke="#E27080" stroke-width="2.5" stroke-dasharray="4 5" opacity="0.7"/>
           </svg>
           <h3>Endless escalating mode</h3>
           <p>The pace keeps rising and a creeping danger line keeps the pressure on. Relaxing — and quietly competitive.</p>
         </article>
 
-        <article class="feature">
+        <article class="feature reveal" data-delay="1">
           <svg class="ic" viewBox="0 0 48 48" aria-hidden="true">
-            <circle cx="24" cy="24" r="16" fill="#ecd98f" opacity="0.7"/>
-            <path d="M18 26 q6 -10 12 0" fill="none" stroke="#3a342c" stroke-width="2.5" stroke-linecap="round"/>
-            <circle cx="24" cy="18" r="3" fill="#3a342c"/>
+            <circle cx="24" cy="24" r="17" fill="#ECD444" opacity="0.75"/>
+            <path d="M14 20 q4 -6 8 0 M26 20 q4 -6 8 0" fill="none" stroke="#36302a" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M28 14 l5 -4 M30 17 l6 -1" fill="none" stroke="#36302a" stroke-width="2.5" stroke-linecap="round"/>
           </svg>
           <h3>Original art &amp; music</h3>
           <p>Hand-tuned procedural watercolor art paired with an easygoing original soundtrack that never wears out its welcome.</p>
         </article>
 
-        <article class="feature">
+        <article class="feature reveal" data-delay="2">
           <svg class="ic" viewBox="0 0 48 48" aria-hidden="true">
-            <circle cx="16" cy="18" r="9" fill="#9bc4e0"/>
-            <circle cx="30" cy="20" r="9" fill="#c79bc8"/>
-            <circle cx="23" cy="32" r="9" fill="#bcd49b"/>
+            <circle cx="16" cy="18" r="10" fill="#40A8DC"/>
+            <circle cx="31" cy="20" r="10" fill="#A848C0"/>
+            <circle cx="23" cy="33" r="10" fill="#EEA248"/>
           </svg>
           <h3>Multiple color palettes</h3>
           <p>Repaint the whole game with selectable palettes — Watercolor, Twilight, and Sunset — to suit your mood.</p>
         </article>
 
-        <article class="feature">
+        <article class="feature reveal" data-delay="3">
           <svg class="ic" viewBox="0 0 48 48" aria-hidden="true">
-            <path d="M24 6 L40 13 V24 c0 11 -8 16 -16 19 C16 40 8 35 8 24 V13 Z" fill="#bcd49b" opacity="0.85"/>
-            <path d="M18 24 l5 5 9 -11" fill="none" stroke="#3a342c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M24 6 L40 13 V24 c0 11 -8 16 -16 19 C16 40 8 35 8 24 V13 Z" fill="#64BE78" opacity="0.88"/>
+            <path d="M18 24 l5 5 9 -11" fill="none" stroke="#fdfaf1" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
           <h3>Privacy-first &amp; offline</h3>
           <p>No ads, no tracking, no accounts. Everything runs on your device and works fully offline.</p>
@@ -237,9 +224,43 @@
       </div>
     </section>
 
-    <!-- ========================================================= HOW TO -->
+    <!-- ===================================================== MORE FEATURES -->
+    <section class="section" style="padding-top:0.5rem">
+      <div class="features">
+        <article class="feature reveal" data-delay="1">
+          <svg class="ic" viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M10 12 h22 a4 4 0 0 1 4 4 v20 l-7 -6 h-19 a4 4 0 0 1 -4 -4 v-10 a4 4 0 0 1 4 -4 Z" fill="#86c2e3"/>
+            <path d="M14 30 l5 5 11 -13" fill="none" stroke="#36302a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>Save &amp; resume, automatically</h3>
+          <p>Your game, best scores, and settings are kept on your device, so you can always pick up right where you left off.</p>
+        </article>
+
+        <article class="feature reveal" data-delay="2">
+          <svg class="ic" viewBox="0 0 48 48" aria-hidden="true">
+            <circle cx="24" cy="24" r="17" fill="none" stroke="#6060D2" stroke-width="3"/>
+            <path d="M7 24 h34 M24 7 c7 6 7 28 0 34 M24 7 c-7 6 -7 28 0 34" fill="none" stroke="#6060D2" stroke-width="2.4" opacity="0.7"/>
+          </svg>
+          <h3>Nine-language localization</h3>
+          <p>BloomDrop speaks your language — the interface is fully localized across nine languages.</p>
+        </article>
+
+        <article class="feature reveal" data-delay="3">
+          <svg class="ic" viewBox="0 0 48 48" aria-hidden="true">
+            <rect x="14" y="6" width="20" height="36" rx="5" fill="none" stroke="#A848C0" stroke-width="3"/>
+            <line x1="20" y1="12" x2="28" y2="12" stroke="#A848C0" stroke-width="2.6" stroke-linecap="round"/>
+            <circle cx="24" cy="34" r="6" fill="#ECD444"/>
+            <path d="M21 34 q3 -5 6 0" fill="none" stroke="#36302a" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <h3>Made for iPhone</h3>
+          <p>A native iOS app, designed to feel at home on your device — responsive, smooth, and built for one-handed play.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================================================== HOW TO ====== -->
     <section class="section" id="how">
-      <div class="howto">
+      <div class="howto reveal">
         <div class="section__head" style="margin-bottom:0">
           <h2>How to play</h2>
           <p>Three steps, endless blooms.</p>
@@ -264,22 +285,62 @@
       </div>
     </section>
 
-    <!-- ========================================================= PRIVACY -->
+    <!-- ==================================================== PALETTES ===== -->
+    <section class="section" id="palettes">
+      <div class="section__head reveal">
+        <h2>Three painterly palettes</h2>
+        <p>Repaint the whole board to match your mood — every palette keeps the seven-tier ladder.</p>
+      </div>
+      <div class="palettes">
+        <article class="palette reveal" data-delay="1">
+          <h3>Watercolor</h3>
+          <p>The signature wash — fresh, bright pigments on cream paper.</p>
+          <div class="swatches" aria-hidden="true">
+            <span style="background:#E27080"></span><span style="background:#EEA248"></span>
+            <span style="background:#ECD444"></span><span style="background:#64BE78"></span>
+            <span style="background:#40A8DC"></span><span style="background:#6060D2"></span>
+            <span style="background:#A848C0"></span>
+          </div>
+        </article>
+        <article class="palette reveal" data-delay="2">
+          <h3>Twilight</h3>
+          <p>Cool, dusky tones for a quieter, late-evening session.</p>
+          <div class="swatches" aria-hidden="true">
+            <span style="background:#56C4BC"></span><span style="background:#48A8C8"></span>
+            <span style="background:#4684CE"></span><span style="background:#5C6CCE"></span>
+            <span style="background:#7860CC"></span><span style="background:#9A56C4"></span>
+            <span style="background:#C454B0"></span>
+          </div>
+        </article>
+        <article class="palette reveal" data-delay="3">
+          <h3>Sunset</h3>
+          <p>Warm corals, golds, and embers glowing across the paper.</p>
+          <div class="swatches" aria-hidden="true">
+            <span style="background:#F4CE60"></span><span style="background:#F6A84E"></span>
+            <span style="background:#F4824E"></span><span style="background:#EA625C"></span>
+            <span style="background:#D6506E"></span><span style="background:#BE4E8A"></span>
+            <span style="background:#A04A9A"></span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================================================== PRIVACY ===== -->
     <section class="section" id="privacy">
-      <div class="privacy-band">
+      <div class="privacy-band reveal">
         <div class="privacy-art" aria-hidden="true">
           <svg viewBox="0 0 200 200" role="img" aria-label="A shield made of watercolor pigment, representing privacy.">
             <defs>
               <radialGradient id="sh" cx="40%" cy="30%" r="75%">
                 <stop offset="0%" stop-color="#fff" stop-opacity="0.85"/>
-                <stop offset="55%" stop-color="#bcd49b"/>
-                <stop offset="100%" stop-color="#9bc4e0"/>
+                <stop offset="55%" stop-color="#64BE78"/>
+                <stop offset="100%" stop-color="#40A8DC"/>
               </radialGradient>
             </defs>
             <path d="M100 18 L168 46 V96 c0 48 -34 70 -68 84 C66 166 32 144 32 96 V46 Z"
                   fill="url(#sh)" opacity="0.92"/>
-            <path d="M78 100 l16 16 30 -38" fill="none" stroke="#3a342c"
-                  stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M78 100 l16 16 30 -38" fill="none" stroke="#fdfaf1"
+                  stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
         <div>
@@ -292,19 +353,20 @@
             <li>Scores, progress, and saved games stay on your device.</li>
             <li>No developer-run server or backend — ever.</li>
           </ul>
-          <p style="margin-top:1rem"><a href="/privacy/">Read the full privacy policy →</a></p>
+          <p style="margin-top:1.2rem"><a href="/privacy/">Read the full privacy policy →</a></p>
         </div>
       </div>
     </section>
 
-    <p class="note">
+    <p class="note reveal">
       BloomDrop is pre-release. A TestFlight beta is upcoming, with the App Store to follow.
     </p>
 
   </main>
 
   <footer class="site">
-    <p>BloomDrop is built by an independent developer, Matan Keret.</p>
+    <span class="foot-brand"><img src="/icon-512.png" alt="" width="30" height="30"> BloomDrop</span>
+    <p>Built by an independent developer, Matan Keret.</p>
     <p class="footlinks">
       <a href="/privacy/">Privacy</a> ·
       <a href="/support/">Support</a> ·
@@ -312,6 +374,41 @@
     </p>
     <p class="meta">© 2026 Matan Keret</p>
   </footer>
+
+  <!-- ====================== tiny self-contained vanilla JS ====== -->
+  <script>
+  (function () {
+    var reduce = window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // sticky-header shadow on scroll
+    var bar = document.getElementById('bar');
+    if (bar) {
+      var onScroll = function () {
+        if (window.scrollY > 8) bar.classList.add('is-stuck');
+        else bar.classList.remove('is-stuck');
+      };
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
+
+    // scroll reveals
+    var items = document.querySelectorAll('.reveal:not(.is-in)');
+    if (reduce || !('IntersectionObserver' in window)) {
+      items.forEach(function (el) { el.classList.add('is-in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    items.forEach(function (el) { io.observe(el); });
+  })();
+  </script>
 
 </body>
 </html>
